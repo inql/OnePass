@@ -9,3 +9,4 @@ directory=`pwd`
 cmake .. -DCMAKE_INSTALL_PREFIX=${directory}
 cmake --build . --target install
 ./bin/OnePass
+ctest -C Release
