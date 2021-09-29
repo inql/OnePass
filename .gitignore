@@ -3,7 +3,7 @@
 CMakeCache.*
 CMakeFiles/*
 [Tt]esting/*
-
+scripts/Testing/*
 ### VisualStudioCode ###
 .vscode/*
 .vscode/settings.json
