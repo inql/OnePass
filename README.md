@@ -1,5 +1,5 @@
 [![Actions Status](https://github.com/inql/OnePass/workflows/Ubuntu/badge.svg)](https://github.com/inql/OnePass/actions)
-[![codecov](https://codecov.io/gh/inql/OnePass/branch/main/graph/badge.svg)](https://codecov.io/gh/inql/OnePass)
+[![codecov](https://codecov.io/gh/inql/OnePass/branch/main/graph/badge.svg?token=DEUYS6PCT4)](https://codecov.io/gh/inql/OnePass)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/inql/OnePass)](https://github.com/inql/OnePass/releases)
 
 # Modern C++ Template
