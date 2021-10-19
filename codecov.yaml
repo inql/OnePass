@@ -1,6 +1,10 @@
 ignore:
   - "test"
   - "src/main.cpp"
+  - "include/onepass/client.hpp"
+  - "include/onepass/clientWrapper.hpp"
+  - "src/client.cpp"
+  - "src/clientWrapper.cpp"
 
 comment:
   require_changes: true
