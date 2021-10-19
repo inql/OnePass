@@ -193,6 +193,7 @@ TEST_F(DatabaseTest, database_search_test)
 {
   Database db{ "mylongpasswordnameneededfortesting" };
   Entry entry = createEntry("example_entry");
+  entry.setValue("mypassword");
 
   db.addEntry("example_entry", entry);
   testing::internal::CaptureStdout();
@@ -202,7 +203,25 @@ TEST_F(DatabaseTest, database_search_test)
   EXPECT_THAT(output, testing::HasSubstr("username:inql"));
   EXPECT_THAT(output, testing::HasSubstr("email:user@domain.com"));
   EXPECT_THAT(output, testing::HasSubstr("url:https://www.domain.com"));
+  EXPECT_THAT(output, testing::Not(testing::HasSubstr("mypassword")));
   EXPECT_THAT(output, testing::HasSubstr("Total results found: 1"));
+}
+
+TEST_F(DatabaseTest, database_search_test_show_all)
+{
+  Database db{ "mylongpasswordnameneededfortesting" };
+  Entry entry = createEntry("example_entry");
+  entry.setValue("mypassword");
+
+  db.addEntry("example_entry", entry);
+  testing::internal::CaptureStdout();
+  db.show("example_entry", true, true);
+  std::string output = testing::internal::GetCapturedStdout();
+
+  EXPECT_THAT(output, testing::HasSubstr("example_entry"));
+  EXPECT_THAT(output, testing::HasSubstr("user@domain.com"));
+  EXPECT_THAT(output, testing::HasSubstr("https://www.domain.com"));
+  EXPECT_THAT(output, testing::HasSubstr("[mypassword]"));
 }
 
 int main(int argc, char** argv)
