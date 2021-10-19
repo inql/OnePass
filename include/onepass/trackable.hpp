@@ -15,7 +15,7 @@ namespace onepass
       friend class boost::serialization::access;
 
      public:
-      T _val;
+      T val_;
       Trackable() : id_(0)
       {
       }
@@ -23,7 +23,7 @@ namespace onepass
       {
         initialize();
       }
-      Trackable(unsigned i, T tracked) : id_(i), _val(tracked)
+      Trackable(unsigned i, T tracked) : id_(i), val_(tracked)
       {
         initialize();
       }
@@ -33,7 +33,7 @@ namespace onepass
         ar &id_;
         ar &created_;
         ar &accessed_;
-        ar &_val;
+        ar &val_;
       }
       unsigned getId() const
       {
