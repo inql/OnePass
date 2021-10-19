@@ -103,6 +103,22 @@ TEST(FieldTest, field_equalTest)
   ASSERT_TRUE(f == f2);
 }
 
+TEST(FieldTest, fieldNotEqualTest)
+{
+  Field f = { "username", "inql" };
+  Field f2 = { "tags", "test" };
+
+  ASSERT_TRUE(f != f2);
+}
+
+TEST(FieldTest, fieldCopyConstructorTest)
+{
+  Field f = { "username", "inql" };
+  Field f2 = f;
+
+  ASSERT_TRUE(f == f2);
+}
+
 TEST(FieldTest, field_printBackTest)
 {
   Field f = { "username", "inql" };
