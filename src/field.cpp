@@ -67,8 +67,6 @@ void Field::setValue(const std::string newValue)
   // if newValue == old, skip setting the value
   if (newValue == history_.back().val_.val_)
     return;
-  if (history_.size() >= UINT_MAX)
-    throw std::out_of_range("Max limit reached");
   unsigned id = static_cast<unsigned>(history_.size());
   Trackable<FieldRecord> newRecord{ id };
   newRecord.val_.type_ = history_.back().val_.type_;
