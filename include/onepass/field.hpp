@@ -20,7 +20,7 @@ namespace onepass
   {
     typedef std::list<Trackable<FieldRecord>> FieldHistory;
 
-  class Field
+    class Field
     {
      private:
       FieldHistory history_;
@@ -44,6 +44,8 @@ namespace onepass
       size_t getChangesCount() const;
 
       friend std::ostream &operator<<(std::ostream &os, const Field &);
+      friend bool operator==(const Field &, const Field &);
+      friend bool operator!=(const Field &, const Field &);
 
       Field &operator=(Field &other);
     };

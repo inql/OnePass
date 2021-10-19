@@ -15,6 +15,18 @@ namespace onepass
       os << field.history_.back().val_.type_name_ << ":" << field.history_.back().val_.val_;
       return os;
     }
+
+    bool operator==(const Field &first, const Field &second)
+    {
+      return (
+          first.getFieldType() == second.getFieldType() && first.getValue() == second.getValue() &&
+          first.getName() == second.getName());
+    }
+
+    bool operator!=(const Field &first, const Field &second)
+    {
+      return !(first == second);
+    }
   }  // namespace core
 }  // namespace onepass
 
@@ -96,18 +108,6 @@ void Field::printBack()
 size_t Field::getChangesCount() const
 {
   return history_.size();
-}
-
-bool operator==(const Field &first, const Field &second)
-{
-  return (
-      first.getFieldType() == second.getFieldType() && first.getValue() == second.getValue() &&
-      first.getName() == second.getName());
-}
-
-bool operator!=(const Field &first, const Field &second)
-{
-  return !(first == second);
 }
 
 Field &Field::operator=(Field &other)

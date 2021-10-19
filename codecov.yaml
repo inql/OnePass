@@ -1,5 +1,6 @@
 ignore:
   - "test"
+  - "src/main.cpp"
 
 comment:
   require_changes: true

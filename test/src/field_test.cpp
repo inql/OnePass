@@ -95,6 +95,14 @@ TEST(FieldTest, field_printChangesTest)
   EXPECT_THAT(output, testing::HasSubstr("Value: inql"));
 }
 
+TEST(FieldTest, field_equalTest)
+{
+  Field f = { "username", "inql" };
+  Field f2 = { "username", "inql" };
+
+  ASSERT_TRUE(f == f2);
+}
+
 TEST(FieldTest, field_printBackTest)
 {
   Field f = { "username", "inql" };
