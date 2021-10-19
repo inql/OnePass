@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.15)
-
 #
 # Project details
 #
@@ -13,7 +12,6 @@ project(
 #
 # Set project options
 #
-
 include(cmake/StandardSettings.cmake)
 include(cmake/StaticAnalyzers.cmake)
 include(cmake/Utils.cmake)
@@ -118,25 +116,27 @@ include(cmake/Doxygen.cmake)
 #
 # Model project dependencies
 #
-
 # Identify and link with the specific "packages" the project uses
-#find_package(package_name package_version REQUIRED package_type [other_options])
-#target_link_libraries(
-#  ${PROJECT_NAME}
-#  PUBLIC
-#    dependency1 ...
-#  PRIVATE
-#    dependency2 ...
-#    ${PROJECT_NAME}_PROJECT_OPTIONS
-#    ${PROJECT_NAME}_PROJECT_WARNINGS
-#)
-#if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
-#  target_link_libraries(
-#    ${PROJECT_NAME}_LIB
-#    PUBLIC
-#      dependency1 ...
-#  )
-#endif()
+find_package(Boost 1.76.0 COMPONENTS system serialization program_options REQUIRED)
+find_package("cryptopp")
+target_link_libraries(
+ ${PROJECT_NAME}
+ PUBLIC 
+ Boost::system
+ Boost::serialization
+ Boost::program_options
+ cryptopp
+)
+if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
+ target_link_libraries(
+   ${PROJECT_NAME}_LIB
+   PUBLIC
+   Boost::system
+   Boost::serialization
+   Boost::program_options
+   cryptopp
+)
+endif()
 
 # For Windows, it is necessary to link with the MultiThreaded library.
 # Depending on how the rest of the project's dependencies are linked, it might be necessary
@@ -148,7 +148,7 @@ include(cmake/Doxygen.cmake)
 #
 # On Linux and Mac this variable is ignored. If any issues rise from it, try commenting it out
 # and letting CMake decide how to link with it.
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+# set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
 
 verbose_message("Successfully added all dependencies and linked against them.")
 

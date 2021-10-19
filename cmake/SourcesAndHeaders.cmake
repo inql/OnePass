@@ -1,16 +1,15 @@
-set(sources
-    src/tmp.cpp
+file(GLOB sources
+  src/*.cpp
 )
 
 set(exe_sources
-		src/main.cpp
 		${sources}
 )
 
-set(headers
-    include/onepass/foo.hpp
+file(GLOB headers
+  include/*.hpp
 )
 
-set(test_sources
-  src/tmp_test.cpp
+file(GLOB test_sources
+  test/src/*.cpp
 )

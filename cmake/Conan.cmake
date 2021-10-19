@@ -4,7 +4,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   #
 
   set(${PROJECT_NAME}_CONAN_REQUIRES 
-  "boost/1.77.0"
+  "boost/1.76.0"
   "cryptopp/8.5.0"
   )
   set(${PROJECT_NAME}_CONAN_OPTIONS "")
@@ -35,11 +35,13 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
       ${${PROJECT_NAME}_CONAN_REQUIRES}
     OPTIONS
       ${${PROJECT_NAME}_CONAN_OPTIONS}
+      ${CONAN_EXTRA_OPTIONS}
     BASIC_SETUP
       CMAKE_TARGETS # Individual targets to link to
     BUILD
       missing
   )
+  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
   conan_basic_setup()
   verbose_message("Conan is setup and all requires have been installed.")
 endif()
