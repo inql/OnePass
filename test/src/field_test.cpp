@@ -211,3 +211,9 @@ TEST(FieldTest, field_no_property_set_print_back)
     FAIL() << "Expected onepass::core::no_property_set_exception";
   }
 }
+
+int main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
